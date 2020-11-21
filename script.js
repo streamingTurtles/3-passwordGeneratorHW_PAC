@@ -46,6 +46,18 @@ var beginWritePassword = function (){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 var lc = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var uc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var no = ["0","1","2","3","4","5","6","7","8","9"]
@@ -57,26 +69,58 @@ function generatePassword(num){
   console.log(pwSize + " this is how long the password will be - from inside generatePassword function");
   alert("series of question now:");
 
-  let lcIncluded = prompt("do you want LOWER CASE LETTERS in your password?");
+  let lcIncluded = confirm("do you want LOWER CASE LETTERS in your password?");
   console.log(lcIncluded + " lcIncluded");
-  let usIncluded = prompt("do you want UPPER CASE LETTERS inUPPER password?");
-  console.log(usIncluded + " usIncluded");
-  let noIncluded = prompt("do you want NUMBERS in your password?");
+  let ucIncluded = confirm("do you want UPPER CASE LETTERS in your password?");
+  console.log(ucIncluded + " ucIncluded");
+  let noIncluded = confirm("do you want NUMBERS in your password?");
   console.log(noIncluded + " noIncluded");
-  let scIncluded = prompt("do you want SPECIAL CHARACTERS");
+  let scIncluded = confirm("do you want SPECIAL CHARACTERS in your password");
   console.log(scIncluded + " scIncluded");
+  
+  // to turn back to local variable after all testing is done
+  // arrays are kept global (without the var) temporarly to test live in the console and not trapped in the function
+  PWarraySized = []; //  variable character feeder array - size will vary depending on users selections of lc, uc, no adn sc types
+  PWarrayActual = []; // the initial, actual user selected password size, length
+  numReduceBySelectedCharType = num;
+  totalSampleSize =0; // initialize  to zero - represents the total size of feeder array - PWarraySized
+  iOffSet = 0; // initialize to zero - adjust the index/count depending on the users character type feeder arrays chosen to include
+
+  if (lcIncluded == true) {
+    PWarraySized = lc   // only boolean value check needed
+    console.log(PWarraySized); // test array is being build upon condition
+    // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
+    PWarrayActual[0] = PWarraySized[Math.floor(Math.random()*26)]; 
+    console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
+    // now subtract the num by this single char entry - need to adjust for when randomly filling the array after character selections are made
+    numReduceBySelectedCharType-- ;  // will fill, tap off the array by this remaining spots to meet user pw size request
+    iOffSet++;  // offset the array index by 1
+    totalSampleSize = 26;  // accounting for lower case letters
+  }
+
+
+  // fill the remainig part of the array to the users desired password size 
+  for (var i=iOffSet; i <= numReduceBySelectedCharType; i++ ) {
+      console.log(i);
+      PWarrayActual[i] = PWarraySized[Math.floor(Math.random()*totalSampleSize)];
+  }
+  console.log(PWarrayActual);
 
 
 
 
 
-
-
-
-
-
-  return "1234 - weak password";
+  
+  return PWarrayActual;
+  // return "1234 - weak password";   // testing code
 }
+
+
+
+
+
+
+
 
 
 
@@ -87,9 +131,9 @@ function writePassword(num) {
   console.log(pwSize + " this is how long the password will be - from inside writePassword function");
   var password = generatePassword(pwSize);
   var passwordText = document.querySelector("#password");
-  // passwordText.value = password;
-  passwordText.value = sc[23];
-}
+  passwordText.value = password;
+  // passwordText.value = sc[23];  // testing single value
+} 
 
 
 // Add event listener to generate button
