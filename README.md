@@ -41,6 +41,7 @@ This application will generate a user password based on 4 selectable character s
 * > If the user enters a password length that is our of the criteri's range (8-126 characters in length), the user will be prompted to reEnter their desired length.  The application will accuratly address either incorrect entries and user cancel button requests from the dialogue prompts.
 * > By design, the character set with the least amount of characters (the digits) will have less chances for randome selections.
 * > The code has been written in a modular function layout, such that further refactoring for optimum modularity is capable without major rewritting of the code.
+* > ## BONUS: If the user selects a password length, but neglects to select any character sets.  A message is printed in the dialogue box where the generated password would occupy.  *You didn't select any characters sets to make a password, Please try again*
 
 <br/>
 <br/>
