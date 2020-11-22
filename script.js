@@ -163,11 +163,24 @@ function generatePassword(num){
       totalSampleSize += 32;  // accounting for the 32 special characters
     }
   
+
+
+
   // fill the remainig part of the array to the users desired password size 
   for (var i=iOffSet; i <= numReduceBySelectedCharType; i++ ) {
       console.log(i);
       PWarrayActual[i] = PWarraySized[Math.floor(Math.random()*totalSampleSize)];
   }
+
+
+  if ( (lcIncluded && ucIncluded && noIncluded && scIncluded) == false){
+    console.log("You didn't select any characters sets to make a password, Please try again");
+    return "You didn't select any characters sets to make a password, Please try again";
+  } 
+
+
+
+
   console.log(PWarrayActual);  
   return PWarrayActual;
   // return "1234 - weak password";   // testing code
