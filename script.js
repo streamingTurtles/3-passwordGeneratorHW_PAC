@@ -82,21 +82,46 @@ function generatePassword(num){
   // arrays are kept global (without the var) temporarly to test live in the console and not trapped in the function
   PWarraySized = []; //  variable character feeder array - size will vary depending on users selections of lc, uc, no adn sc types
   PWarrayActual = []; // the initial, actual user selected password size, length
-  numReduceBySelectedCharType = num;
+  numReduceBySelectedCharType = num-1;
   totalSampleSize =0; // initialize  to zero - represents the total size of feeder array - PWarraySized
   iOffSet = 0; // initialize to zero - adjust the index/count depending on the users character type feeder arrays chosen to include
 
-  if (lcIncluded == true) {
-    PWarraySized = lc   // only boolean value check needed
+  // for LowerCase user selection
+  if (lcIncluded == true) {  // only boolean value check needed
+    PWarraySized = PWarraySized.concat(lc);  // start to build the feeder array based on user choices
     console.log(PWarraySized); // test array is being build upon condition
     // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
-    PWarrayActual[0] = PWarraySized[Math.floor(Math.random()*26)]; 
+    PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*26)]; 
     console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
     // now subtract the num by this single char entry - need to adjust for when randomly filling the array after character selections are made
-    numReduceBySelectedCharType-- ;  // will fill, tap off the array by this remaining spots to meet user pw size request
+    numReduceBySelectedCharType;  // will fill, tap off the array by this remaining spots to meet user pw size request
+    console.log(numReduceBySelectedCharType + " = fill array up to index")
     iOffSet++;  // offset the array index by 1
-    totalSampleSize = 26;  // accounting for lower case letters
+    console.log(iOffSet + " = iOffSet")
+    totalSampleSize += 26;  // accounting for 26 lower case letters to sample
   }
+
+  // for UpperCase user selection
+  if (ucIncluded == true) {  // only boolean value check needed
+    PWarraySized = PWarraySized.concat(uc);   // start to build the feeder array based on user choices
+    console.log(PWarraySized); // test array is being build upon condition
+    // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
+    PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*26)]; 
+    console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
+    console.log(PWarrayActual[1]); // test single random fill for uc (lowercase) letters
+    // now subtract the num by this single char entry - need to adjust for when randomly filling the array after character selections are made
+    numReduceBySelectedCharType;  // will fill, tap off the array by this remaining spots to meet user pw size request
+    console.log(numReduceBySelectedCharType + " = fill array up to index")
+    iOffSet++;  // offset the array index by 1
+    console.log(iOffSet + " = iOffSet")
+    totalSampleSize += 26;  // accounting for 26 upper case letters to sample
+  }
+
+
+  
+
+
+
 
 
   // fill the remainig part of the array to the users desired password size 
@@ -104,13 +129,7 @@ function generatePassword(num){
       console.log(i);
       PWarrayActual[i] = PWarraySized[Math.floor(Math.random()*totalSampleSize)];
   }
-  console.log(PWarrayActual);
-
-
-
-
-
-  
+  console.log(PWarrayActual);  
   return PWarrayActual;
   // return "1234 - weak password";   // testing code
 }
