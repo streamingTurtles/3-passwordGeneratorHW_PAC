@@ -134,6 +134,23 @@ function generatePassword(num){
       totalSampleSize += 10;  // accounting for the 10 numeric digits 0-9
     }
 
+    // for Special Characters
+    if (scIncluded == true) {  // only boolean value check needed
+      PWarraySized = PWarraySized.concat(sc);   // start to build the feeder array based on user choices
+      console.log(PWarraySized); // test array is being build upon condition
+      // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
+      PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*32)];  // there are 32 special characters in the sc array
+      // console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
+      // console.log(PWarrayActual[1]); // test single random fill for uc (lowercase) letters
+      // console.log(PWarrayActual[2]); // test single random fill for the numbers 
+      // console.log(PWarrayActual[3]); // test single random fill for the special characters
+      // now subtract the num by this single char entry - need to adjust for when randomly filling the array after character selections are made
+      numReduceBySelectedCharType;  // will fill, tap off the array by this remaining spots to meet user pw size request
+      console.log(numReduceBySelectedCharType + " = fill array up to index")
+      iOffSet++;  // offset the array index by 1
+      console.log(iOffSet + " = iOffSet")
+      totalSampleSize += 32;  // accounting for the 32 special characters
+    }
 
   
 
