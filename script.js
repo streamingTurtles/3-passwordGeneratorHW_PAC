@@ -173,7 +173,7 @@ function generatePassword(num){
   }
 
 
-  if ( (lcIncluded && ucIncluded && noIncluded && scIncluded) == false){
+  if ( (lcIncluded == false) && (ucIncluded ==false) && (noIncluded ==false) && (scIncluded== false ) ){
     console.log("You didn't select any characters sets to make a password, Please try again");
     return "You didn't select any characters sets to make a password, Please try again";
   } 
