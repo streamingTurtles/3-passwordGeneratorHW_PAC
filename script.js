@@ -89,7 +89,11 @@ function generatePassword(num){
     PWarraySized = PWarraySized.concat(lc);  // start to build the feeder array based on user choices
     console.log(PWarraySized); // test array is being build upon condition
     // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
-    PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*26)]; 
+    
+    // PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*26)];
+    PWarrayActual[iOffSet] = lc[Math.floor(Math.random()*26)];
+
+    console.log(PWarrayActual[iOffSet]); 
     // console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
     // now subtract the num by this single char entry - need to adjust for when randomly filling the array after character selections are made
     numReduceBySelectedCharType;  // will fill, tap off the array by this remaining spots to meet user pw size request
@@ -103,7 +107,11 @@ function generatePassword(num){
     PWarraySized = PWarraySized.concat(uc);   // start to build the feeder array based on user choices
     console.log(PWarraySized); // test array is being build upon condition
     // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
-    PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*26)]; 
+    
+    // PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*26)];
+    PWarrayActual[iOffSet] = uc[Math.floor(Math.random()*26)];
+
+    console.log(PWarrayActual[iOffSet]);
     // console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
     // console.log(PWarrayActual[1]); // test single random fill for uc (lowercase) letters
     // now subtract the num by this single char entry - need to adjust for when randomly filling the array after character selections are made
@@ -118,7 +126,11 @@ function generatePassword(num){
       PWarraySized = PWarraySized.concat(no);   // start to build the feeder array based on user choices
       console.log(PWarraySized); // test array is being build upon condition
       // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
-      PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*10)]; 
+      
+      // PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*10)];
+      PWarrayActual[iOffSet] = no[Math.floor(Math.random()*10)];
+
+      console.log(PWarrayActual[iOffSet]);
       // console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
       // console.log(PWarrayActual[1]); // test single random fill for uc (lowercase) letters
       // console.log(PWarrayActual[2]); // test single random fill for the numbers 
@@ -134,7 +146,11 @@ function generatePassword(num){
       PWarraySized = PWarraySized.concat(sc);   // start to build the feeder array based on user choices
       console.log(PWarraySized); // test array is being build upon condition
       // guarentee that at least one of the selected character types is selected per the criteria - make it a random selection
-      PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*32)];  // there are 32 special characters in the sc array
+      
+      // PWarrayActual[iOffSet] = PWarraySized[Math.floor(Math.random()*32)];
+      PWarrayActual[iOffSet] = sc[Math.floor(Math.random()*32)];
+        
+      console.log(PWarrayActual[iOffSet]);
       // console.log(PWarrayActual[0]); // test single random fill for lc (lowercase) letters
       // console.log(PWarrayActual[1]); // test single random fill for uc (lowercase) letters
       // console.log(PWarrayActual[2]); // test single random fill for the numbers 
